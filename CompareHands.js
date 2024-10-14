@@ -84,7 +84,13 @@ export default class CompareHands {
     return this.rankToPoint(ranks[4]);
   }
 
-  static isThreeOfAKind(hand) { // TODO!
+  static isThreeOfAKind ( hand ) {
+    let rankCount = this.getRankCount( hand );
+    for ( let rank in rankCount ) {
+      if ( rankCount[ rank ] === 3 ) {
+        return this.rankToPoint( rank ) * 100; // weight for 3 of a kind
+      }
+    }
     return 0;
   }
 
@@ -111,6 +117,17 @@ export default class CompareHands {
       return this.rankToPoint(a.rank) < this.rankToPoint(b.rank) ?
         -1 : 1;
     });
+  }
+
+  static getRankCount ( hand ) {
+    let rankCount = {};
+    for ( let card of hand.cards ) {
+      if ( !rankCount[ card.rank ] ) {
+        rankCount[ card.rank ] = 0;
+      }
+      rankCount[ card.rank ]++;
+    }
+    return rankCount;
   }
 
 
