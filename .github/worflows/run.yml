@@ -1,4 +1,5 @@
-name:    Unit-Testing with Vitest
+name: Node.js CI
+
 # Trigger which git action (push, pull_request)
 # in which branch(es) should start the jobs...
 on:
