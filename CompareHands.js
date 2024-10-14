@@ -104,7 +104,13 @@ export default class CompareHands {
     return 0;
   }
 
-  static isOnePair(hand) { // TODO!
+  static isOnePair(hand) { 
+    let rankCount = this.getRankCount( hand );
+    for ( let rank in rankCount ) {
+      if ( rankCount[ rank ] === 2 ) {
+        return this.rankToPoint( rank ); // return points for the pair
+      }
+    }
     return 0;
   }
 
