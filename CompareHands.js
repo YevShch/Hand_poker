@@ -39,7 +39,13 @@ export default class CompareHands {
     return this.isStraight(hand) && this.isFlush(hand);
   }
 
-  static isFourOfAKind(hand) { // TODO!
+  static isFourOfAKind(hand) { 
+    let rankCount = this.getRankCount( hand );
+    for ( let rank in rankCount ) {
+      if ( rankCount[ rank ] === 4 ) {
+        return this.rankToPoint( rank ) * 100; // weight for 3 of a kind
+      }
+    }
     return 0;
   }
 
