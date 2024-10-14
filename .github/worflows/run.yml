@@ -1,4 +1,4 @@
-name: Unit-Testing with Vitest
+name:    Unit-Testing with Vitest
 # Trigger which git action (push, pull_request)
 # in which branch(es) should start the jobs...
 on:
