@@ -125,7 +125,13 @@ export default class CompareHands {
   }
 
   static isHighestCard(hand) { // TODO!
-    return 0;
+    this.sortByRank( hand );
+    let score = 0, counter = 0;
+    for ( let card of hand.cards ) {
+      score += this.rankToPoint( card.rank ) * 10 ** counter;
+      counter += 2;
+    }
+    return score;
   }
 
   // helper functions below:
