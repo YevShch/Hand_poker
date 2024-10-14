@@ -4,12 +4,12 @@ import CompareHands from '../CompareHands.js';
 
 const suits = '♥♦♣♠';
 
-test( 'check that isTwoPair returns truthy if is one pair', () => {
+test( 'check that isTwoPair returns truthy if is two pair', () => {
   let hand = new Hand( '♣Q', '♥Q', '♣T', '♦T', '♣8' );
   expect( CompareHands.isTwoPair( hand ) ).toBeTruthy();
 } );
 
-test( 'check thatisOnePair returns falsey if not is two pair', () => {
+test( 'check that isTwoPair returns falsey if not is two pair', () => {
   let hand = new Hand( '♣Q', '♣J', '♥T', '♦T', '♣8' );
   expect( CompareHands.isTwoPair( hand ) ).toBeFalsy();
 } );

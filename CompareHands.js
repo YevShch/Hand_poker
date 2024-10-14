@@ -49,7 +49,16 @@ export default class CompareHands {
     return 0;
   }
 
-  static isFullHouse(hand) { // TODO!
+  static isFullHouse(hand) { 
+    let rankCount = this.getRankCount( hand );
+    let hasThree = false, hasTwo = false;
+    for ( let rank in rankCount ) {
+      if ( rankCount[ rank ] === 3 ) { hasThree = this.rankToPoint( rank ); }
+      if ( rankCount[ rank ] === 2 ) { hasTwo = this.rankToPoint( rank ); }
+    }
+    if ( hasThree && hasTwo ) {
+      return hasThree * 100 + hasTwo; // weight 3 of a kind higher than the pair
+    }
     return 0;
   }
 
