@@ -81,24 +81,30 @@ export default class CompareHands {
     return score;
   }
 
-  static isStraight(hand) {
+  static isStraight ( hand ) {
+    if ( hand.rank.includes( '2' ) && hand.rank.includes( 'A' ) ) {
+      hand.rank.replace( 'A', '1' )
+
+    }
     // sort from low to high
-    this.sortByRank(hand);
+    this.sortByRank( hand );
     // get the ranks of the cards
     let ranks = '';
-    for (let card of hand.cards) {
+    for ( let card of hand.cards ) {
       ranks += card.rank;
     }
     // if both 2 and A then place A first
-    if (ranks.includes('2') && ranks.includes('A')) {
-      ranks = 'A' + ranks.slice(0, 4);
+    if ( ranks.includes( '2' ) && ranks.includes( 'A' ) ) {
+       ranks = 'A' + ranks.slice( 0, 4 );        
     }
-    // not a straight -> 0
-    if (!('A' + this.ranks).includes(ranks)) { return 0; };
-    // return points depending on strength of straight
-    return this.rankToPoint(ranks[4]);
-  }
 
+    // not a straight -> 0
+    if ( !( 'A' + this.ranks ).includes( ranks ) ) { return 0; };
+    // return points depending on strength of straight
+    return this.rankToPoint( ranks[ 4 ] );
+  } 
+
+  
   static isThreeOfAKind ( hand ) {
     let rankCount = this.getRankCount( hand );
     for ( let rank in rankCount ) {
@@ -145,7 +151,7 @@ export default class CompareHands {
 
   // helper functions below:
 
-  static rankToPoint(rank) {
+  static rankToPoint ( rank ) {
     return this.ranks.indexOf(rank) + 2;
   }
 
