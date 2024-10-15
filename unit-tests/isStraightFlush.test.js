@@ -1,15 +1,15 @@
 import { expect, test } from 'vitest';
-import Hand from '../Hand.js';
-import CompareHands from '../CompareHands.js';
+import Hand from '../classes/Hand.js';
+import CompareHands from '../classes/CompareHands.js';
 
-const suits = '♥♦♣♠';
+//const suits = '♥♦♣♠';
 
 test( 'check that isStraightFlush returns truthy if Straight Flush', () => {
   let hand = new Hand( '♣Q', '♣J', '♣T', '♣9', '♣8' );
     expect( CompareHands.isStraightFlush( hand ) ).toBeTruthy();
   } );
 
-test( 'check that isStraightFlush returns falsey if not Straight Flush', () => {
+test( 'check that isStraightFlush returns falsy if not Straight Flush', () => {
   let hand = new Hand( '♣Q', '♣J', '♥T', '♣9', '♣8' );
   expect( CompareHands.isStraightFlush( hand ) ).toBeFalsy();
 } );

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
-import Hand from '../Hand.js';
-import CompareHands from '../CompareHands.js';
+import Hand from '../classes/Hand.js';
+import CompareHands from '../classes/CompareHands.js';
 
 const suits = '♥♦♣♠';
 
@@ -8,6 +8,7 @@ test( 'check that isHighestCard returns truthy if is highest card', () => {
   let hand = new Hand( '♣Q', '♥Q', '♣T', '♦T', '♣8' );
   expect( CompareHands.isHighestCard( hand ) ).toBeTruthy();
 } );
+
 
 test( 'isHighestCard should return correct score for the highest card', () => {
   let hand = new Hand( '♣2', '♠5', '♥J', '♦9', '♣7' );  // J -high card

@@ -1,4 +1,5 @@
-## ♠️ Poker hand comparer - workshop on writing unit tests and running via GitHub Actions 🃏 ♠️A ♥️K ♣️Q ♦️J ♠️10 🃏
+ 🃏 ♠️A ♥️K ♣️Q ♦️J ♠️10 🃏
+## ♠️ Poker hand comparer - workshop on writing unit tests and running via GitHub Actions  
 
 ### Workshop Overview
 The workshop focuses on implementing and testing a program for comparing poker hands, exploring different testing strategies, and automating the testing process.

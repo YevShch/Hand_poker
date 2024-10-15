@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
-import Hand from '../Hand.js';
-import CompareHands from '../CompareHands.js';
+import Hand from '../classes/Hand.js';
+import CompareHands from '../classes/CompareHands.js';
 
 const suits = '♥♦♣♠';
 
