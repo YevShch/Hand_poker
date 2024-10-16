@@ -82,10 +82,7 @@ export default class CompareHands {
   }
 
   static isStraight ( hand ) {
-    if ( hand.rank.includes( '2' ) && hand.rank.includes( 'A' ) ) {
-      hand.rank.replace( 'A', '1' )
-
-    }
+    
     // sort from low to high
     this.sortByRank( hand );
     // get the ranks of the cards
