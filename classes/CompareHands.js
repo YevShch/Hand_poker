@@ -136,7 +136,7 @@ export default class CompareHands {
     return 0;
   }
 
-  static isHighestCard(hand) { // TODO!
+  static isHighestCard(hand) { 
     this.sortByRank( hand );
     let score = 0, counter = 0;
     for ( let card of hand.cards ) {
