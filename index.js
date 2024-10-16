@@ -17,7 +17,12 @@ import CompareHands from './classes/CompareHands.js';
 // console.log( CompareHands.comparer( hand5, hand6 ) );
 
 
-let hand1 = new Hand( '♠5', '♠4', '♠3', '♠2', '♠A' );
-let hand2 = new Hand( '♠5', '♠4', '♠3', '♠2', '♠6' );
+// let hand1 = new Hand( '♠5', '♠4', '♠3', '♠2', '♠A' );
+// let hand2 = new Hand( '♠5', '♠4', '♠3', '♠2', '♠6' );
 
-console.log( CompareHands.comparer( hand1, hand2 ) );
+// console.log( CompareHands.comparer( hand1, hand2 ) );
+
+
+let higherHand = new Hand( '♣7', '♥2', '♣2', '♦A', '♠A' );
+let lowerHand = new Hand( '♣5', '♥Q', '♣Q', '♦K', '♠K' );
+console.log( CompareHands.comparer( higherHand, lowerHand ) );
