@@ -29,6 +29,6 @@ export default function createHandWithSuits ( { ranks, combinationType } ) {
     return new Card(suits[index], rank); // Create cards with the required suits
   });
 
-  console.log('Cards created:', cards);
+  // console.log('Cards created:', cards);
   return { cards };
 }

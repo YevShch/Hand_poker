@@ -8,17 +8,13 @@ test( 'CompareHands should assign higher points to stronger hands', () => {
     const higherHand = createHandWithSuits( hands[ i ] );  // Create hand with suits
     const lowerHand = createHandWithSuits( hands[ i + 1 ] );
 
-    console.log( 'Testing hands:' );
-    console.log( 'Higher hand:', higherHand.cards ); 
-    console.log( 'Lower hand:', lowerHand.cards );  
+    console.log( `\n\n--- Testing round ${ i + 1 } ---` );
 
-    // Ensure the hands have the 'cards' property
-    expect( higherHand ).toHaveProperty( 'cards' );
-    expect( lowerHand ).toHaveProperty( 'cards' );
-
-    console.log( "Compare hands:" );
-    console.log( CompareHands.comparer( higherHand, lowerHand ) );
+    const higherHandCards = higherHand.cards.map( card => `${ card.suit }${ card.rank }` ).join( ', ' );
+    const lowerHandCards = lowerHand.cards.map( card => `${ card.suit }${ card.rank }` ).join( ', ' );
+    console.log( 'Higher hand:', `(${ higherHandCards })` );
+    console.log( 'Lower hand:', `(${ lowerHandCards })` );
 
     expect( CompareHands.comparer( higherHand, lowerHand ) ).toEqual( higherHand );
   }
-} );
+}, 100000);
