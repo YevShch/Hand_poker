@@ -7,7 +7,7 @@ const __filename = fileURLToPath( import.meta.url );
 const __dirname = path.dirname( __filename );
 
 // Path to the combinations.txt file
-const filePath = path.join( __dirname, 'combinations.txt' );
+const filePath = path.join( __dirname, 'poker_combos.txt' );
 
 // Function to load hands from file
 const data = fs.readFileSync( filePath, 'utf-8' );
@@ -27,6 +27,6 @@ for ( const line of lines ) {
   hands.push( { ranks, combinationType } ); // Store both ranks and combination type
 }
 
-console.log( 'Hands:', hands );
+// console.log( 'Hands:', hands );
 
 export default hands;
