@@ -13,5 +13,8 @@
   "description": "",
   "dependencies": {
     "vitest": "^2.1.2"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^2.1.3"
   }
 }

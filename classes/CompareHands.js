@@ -36,18 +36,30 @@ export default class CompareHands {
   static isStraightFlush(hand) {
     // if not straight or not flush -> 0
     // otherwise score of flush
-    return this.isStraight(hand) && this.isFlush(hand);
-  }
+    return this.isFlush( hand ) && this.isStraight( hand );
+  } 
 
-  static isFourOfAKind(hand) { 
+
+  static isFourOfAKind ( hand ) {
     let rankCount = this.getRankCount( hand );
+    let fourOfAKindRank = 0;
+    let kicker = 0;
+
     for ( let rank in rankCount ) {
       if ( rankCount[ rank ] === 4 ) {
-        return this.rankToPoint( rank ) * 100; // weight for 3 of a kind
+        fourOfAKindRank = this.rankToPoint( rank ); // save points for the Four of a Kind
+      } else if ( rankCount[ rank ] === 1 ) {
+        kicker = this.rankToPoint( rank ); // save the kicker (the only remaining card)
+        // console.log( "Kicker: ", kicker);
       }
+    }
+    if ( fourOfAKindRank ) {
+      // return points for Four of a Kind and the kicker
+      return fourOfAKindRank * 100 + kicker;
     }
     return 0;
   }
+
 
   static isFullHouse(hand) { 
     let rankCount = this.getRankCount( hand );
@@ -81,59 +93,87 @@ export default class CompareHands {
     return score;
   }
 
-  static isStraight(hand) {
-    // sort from low to high
-    this.sortByRank(hand);
-    // get the ranks of the cards
+
+  static isStraight ( hand ) { 
+    this.sortByRank( hand );
     let ranks = '';
-    for (let card of hand.cards) {
+    for ( let card of hand.cards ) {
       ranks += card.rank;
     }
     // if both 2 and A then place A first
-    if (ranks.includes('2') && ranks.includes('A')) {
-      ranks = 'A' + ranks.slice(0, 4);
+    if ( ranks.includes( '2' ) && ranks.includes( 'A' ) ) {
+      ranks = 'A' + ranks.slice( 0, 4 ); 
     }
     // not a straight -> 0
-    if (!('A' + this.ranks).includes(ranks)) { return 0; };
+    if ( !( 'A' + this.ranks ).includes( ranks ) ) { return 0; };
     // return points depending on strength of straight
-    return this.rankToPoint(ranks[4]);
-  }
-
+    return this.rankToPoint( ranks[ 4 ] );
+  } 
+  
   static isThreeOfAKind ( hand ) {
     let rankCount = this.getRankCount( hand );
+    let threeOfAKindRank = 0;
+    let kickers = [];
+   
     for ( let rank in rankCount ) {
       if ( rankCount[ rank ] === 3 ) {
-        return this.rankToPoint( rank ) * 100; // weight for 3 of a kind
+        threeOfAKindRank = this.rankToPoint( rank );
+      } else {
+        kickers.push( this.rankToPoint( rank ) );
       }
+    }
+    if ( threeOfAKindRank) {
+      kickers.sort( ( a, b ) => b - a );
+      return threeOfAKindRank * 10000 + kickers[ 0 ] * 100 + kickers[ 1 ];
     }
     return 0;
   }
 
-  static isTwoPair(hand) { 
+  static isTwoPair ( hand ) {
     let rankCount = this.getRankCount( hand );
     let pairs = [];
+    let kicker = 0;
+
     for ( let rank in rankCount ) {
       if ( rankCount[ rank ] === 2 ) {
-        pairs.push( this.rankToPoint( rank ) );
+        pairs.push( this.rankToPoint( rank ) ); // store both pairs
+      } else {
+        kicker = this.rankToPoint( rank ); // save the kicker (the only remaining card)
       }
     }
+
     if ( pairs.length === 2 ) {
-      return pairs[ 0 ] * 10 + pairs[ 1 ]; // return points for both pairs
+      // sort the pairs from highest to lowest
+      pairs.sort( ( a, b ) => b - a );
+      // return points for both pairs and add the kicker as an additional value
+      return pairs[ 0 ] * 10000 + pairs[ 1 ] * 100 + kicker;;
     }
     return 0;
   }
 
-  static isOnePair(hand) { 
+
+  static isOnePair ( hand ) {
     let rankCount = this.getRankCount( hand );
+    let pair = 0;
+    let kickers = [];
+
     for ( let rank in rankCount ) {
       if ( rankCount[ rank ] === 2 ) {
-        return this.rankToPoint( rank ); // return points for the pair
+        pair = this.rankToPoint( rank ); // find the pair
+      } else {
+        kickers.push( this.rankToPoint( rank ) ); // the remaining cards are kickers
       }
+    }
+    if ( pair ) {
+      // sort the kickers from highest to lowest
+      kickers.sort( ( a, b ) => b - a );
+      // return points for the pair and kickers as additional values
+      return pair * 1000000 + kickers[ 0 ] * 10000 + kickers[ 1 ] * 100 + kickers[ 2 ];
     }
     return 0;
   }
 
-  static isHighestCard(hand) { // TODO!
+  static isHighestCard(hand) { 
     this.sortByRank( hand );
     let score = 0, counter = 0;
     for ( let card of hand.cards ) {
@@ -145,7 +185,7 @@ export default class CompareHands {
 
   // helper functions below:
 
-  static rankToPoint(rank) {
+  static rankToPoint ( rank ) {
     return this.ranks.indexOf(rank) + 2;
   }
 

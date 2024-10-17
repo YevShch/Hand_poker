@@ -1,0 +1,13 @@
+   1      4     188     4324     64860   A K Q J T   SF   Royal Flush
+   2      4     184     4140     60720   K Q J T 9   SF   King-High Straight Flush
+   3      4     184     4140     60720   Q J T 9 8   SF   Queen-High Straight Flush
+   4      4     184     4140     60720   J T 9 8 7   SF   Jack-High Straight Flush
+   5      4     184     4140     60720   T 9 8 7 6   SF   Ten-High Straight Flush
+   6      4     184     4140     60720   9 8 7 6 5   SF   Nine-High Straight Flush
+   7      4     184     4140     60720   8 7 6 5 4   SF   Eight-High Straight Flush
+   8      4     184     4140     60720   7 6 5 4 3   SF   Seven-High Straight Flush
+   9      4     184     4140     60720   6 5 4 3 2   SF   Six-High Straight Flush
+  11      4     182     4052     58825   A A A A K   4K   Four Aces
+  12      4     166     3364     44361   A A A A Q   4K   Four Aces
+  13      4     150     2740     32485   A A A A J   4K   Four Aces
+  14      4     134     2180     22945   A A A A T   4K   Four Aces
