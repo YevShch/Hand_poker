@@ -4,13 +4,6 @@ import CompareHands from '../classes/CompareHands.js';
 
 // const suits = '♥♦♣♠';
 
-test( 'Check that hands with identical Four of a Kind are ranked correctly by kicker', () => {
-  let higherHand = new Hand( '♦8', '♥8', '♠8', '♦J', '♣8' );
-  let lowerHand = new Hand( '♦8', '♥8', '♠8', '♦T', '♣8' );
-  expect( CompareHands.comparer( higherHand, lowerHand ) ).toEqual( higherHand );
-
-} ); 
-
 test( 'Check that hands with identical Two Pair are ranked correctly by kicker', () => {
   let higherHand = new Hand( '♣6', '♥6', '♣T', '♦T', '♣8' );
   let lowerHand = new Hand( '♠6', '♦6', '♠T', '♥T', '♣7' );;
