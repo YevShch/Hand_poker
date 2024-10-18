@@ -4,7 +4,15 @@ export default class CompareHands {
   static ranks = '23456789TJQKA';
 
   // return the winning hand
-  static comparer(hand1, hand2) {
+  static comparer ( hand1, hand2 ) {
+    
+   
+    // NOTE! This check for identical cards should be commented out
+    // during the execution of HIVAT-tests
+    
+    // if ( this.hasDuplicateCards( hand1, hand2 ) ) {
+    //   return { success: false, message: 'Error: There is the same card in both hands.' };
+    // }
 
     let comparers = [
       'isStraightFlush',
@@ -32,6 +40,24 @@ export default class CompareHands {
     }
 
   }
+
+  // Function to check for duplicate cards
+  static hasDuplicateCards ( hand1, hand2 ) {
+    let allCards = [ ...hand1.cards, ...hand2.cards ]; // combine all cards from both hands
+    let cardSet = new Set(); // create a Set to store unique cards
+
+    for ( let card of allCards ) {
+      let cardKey = `${ card.rank }${ card.suit }`; // key for the card: combination of rank and suit
+      if ( cardSet.has( cardKey ) ) {
+        // if such a card already exists, a duplicate is found
+        return true;
+      }
+      cardSet.add( cardKey ); // add the card to the Set
+    }
+
+    return false; // if no duplicates are found
+  }
+
 
   static isStraightFlush(hand) {
     // if not straight or not flush -> 0
@@ -207,5 +233,5 @@ export default class CompareHands {
     return rankCount;
   }
 
-
+  
 }
