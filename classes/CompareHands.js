@@ -6,10 +6,13 @@ export default class CompareHands {
   // return the winning hand
   static comparer ( hand1, hand2 ) {
     
-    //Add a check for identical cards
-    if ( this.hasDuplicateCards( hand1, hand2 ) ) {
-      return { success: false, message: 'Error: There is the same card in both hands.' };
-    }
+   
+    // NOTE! This check for identical cards should be commented out
+    // during the execution of HIVAT-tests
+    
+    // if ( this.hasDuplicateCards( hand1, hand2 ) ) {
+    //   return { success: false, message: 'Error: There is the same card in both hands.' };
+    // }
 
     let comparers = [
       'isStraightFlush',

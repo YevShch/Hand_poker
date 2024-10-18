@@ -57,6 +57,6 @@ import CompareHands from './classes/CompareHands.js';
 // console.log( CompareHands.comparer( higherHand, lowerHand ) );
 
 
-let hand1 = new Hand( '♣A', '♣A', '♣3', '♥2', '♦2' );
+let hand1 = new Hand( '♥A', '♣A', '♣3', '♥2', '♦2' );
 let hand2 = new Hand( '♦A', '♦Q', '♥Q', '♥K', '♣K' );
 console.log( CompareHands.comparer( hand1, hand2 ) );
